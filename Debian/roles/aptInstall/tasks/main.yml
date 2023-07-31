@@ -1,0 +1,50 @@
+---
+- name: install needed software, that can't run in distrobox
+  become: yes
+  apt:
+    pkg:
+    - distrobox
+    - syncthing
+    - i3
+    - vim
+    - terminator
+    - clamav
+    - flatpak
+    - xclip
+    - lxpolkit
+    - ufw
+    - gufw
+    - timeshift
+
+- name: remove preinstalled apps
+  become:yes
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - libreoffice
+    - libreoffice-common
+    - thunderbird
+    - vlc
+    - gnome-2048
+    - gnome-sudoku
+    - gnome-robots
+    - gnome-nibbles
+    - gnome-chess
+    - gnome-klotski
+    - gnome-mahjongg
+    - gnome-mines
+    - gnome-taquin
+    - gnome-tetravex
+    - firefox-esr
+    - firefox
+
+- name: upgrade all installed packages to latest version
+  become: yes
+  apt:
+    upgrade: dist
+    update_cache: yes
+    autoremove: yes
+
+
+

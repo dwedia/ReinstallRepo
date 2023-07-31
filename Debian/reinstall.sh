@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# enable contrib and nonfree repositories
+sudo apt-add-repository contrib -y
+sudo apt-add-repository non-free -y
+
+# install ansible-core if not already installed
+if [ ! -f /usr/bin/ansible ]; 
+then
+    sudo apt install ansible-core;
+    echo "Ansible-core has been installed, running install playbook";
+else
+    echo "Ansible-core already installed, running playbook"
+fi
+
+# install the community general flatpak module
+ansible-galaxy collection install community.general
+
+# run the apt install playbook
+if [ -f /usr/bin/ansible ]; 
+then
+    ansible-playbook reinstall-playbook.yml -K;
+fi
+
+# run the flatpak install playbook
+if [ -f /usr/bin/ansible ]; 
+then
+    ansible-playbook reinstall-flatpak-playbook.yml;
+fi
+
+if [ -f /usr/bin/distrobox ]; 
+then
+    ansible-playbook reinstall-distrobox-playbook.yml;
+fi
+
+# Set up git config user
+git config --global user.name "Ramiraz80"
+git config --global user.email "eric@bellaiche.net"
+
+# Check for distribution
+DISTRO=$(lsb_release -i | grep Distributor | cut -f 2-)
+
+# setup firewall with ufw, if Distribution is Debian
+if [ "Debian" = $DISTRO ];
+then
+    sudo ufw default deny incoming
+    sudo ufw default allow outgoing
+    sudo ufw enable
+fi
+
+
+
+#### Missing:
+better lock screen and i3lock
