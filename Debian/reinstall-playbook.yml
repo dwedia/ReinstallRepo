@@ -20,4 +20,4 @@
 - hosts: localhost
   become: false
   roles:
-  - DistroboxInstall
+  - distroboxInstall

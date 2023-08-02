@@ -7,7 +7,7 @@ sudo apt-add-repository non-free -y
 # install ansible-core if not already installed
 if [ ! -f /usr/bin/ansible ]; 
 then
-    sudo apt install ansible-core;
+    sudo apt install -y ansible-core;
     echo "Ansible-core has been installed, running install playbook";
 else
     echo "Ansible-core already installed, running playbook"
