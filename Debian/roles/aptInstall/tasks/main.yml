@@ -6,6 +6,7 @@
       - distrobox
       - syncthing
       - i3
+      - rofi
       - vim
       - terminator
       - clamav
