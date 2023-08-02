@@ -22,7 +22,6 @@
   ansible.builtin.shell:
     cmd: distrobox enter fedora-apps -- "{{ item }}"
   loop:
-    - "distrobox-export -b /usr/bin/git -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/htop -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/tldr -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/tmux -ep ~/.local/bin"
@@ -30,5 +29,3 @@
     - "distrobox-export -b /usr/bin/bat -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/exa -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/dua -ep ~/.local/bin"
-    - "distrobox-export -b /usr/bin/gnome-screenshot -ep ~/.local/bin"
-
