@@ -3,23 +3,23 @@
   become: yes
   apt:
     pkg:
-    - distrobox
-    - syncthing
-    - i3
-    - vim
-    - terminator
-    - clamav
-    - flatpak
-    - xclip
-    - lxpolkit
-    - ufw
-    - gufw
-    - timeshift
-    - git
-    - gnome-screenshot
+      - distrobox
+      - syncthing
+      - i3
+      - vim
+      - terminator
+      - clamav
+      - flatpak
+      - xclip
+      - lxpolkit
+      - ufw
+      - gufw
+      - timeshift
+      - git
+      - gnome-screenshot
 
 - name: remove preinstalled apps
-  become:yes
+  become: yes
   apt:
     name: "{{ item }}"
     state: absent
@@ -47,6 +47,3 @@
     upgrade: dist
     update_cache: yes
     autoremove: yes
-
-
-

@@ -1,3 +1,4 @@
+---
 - name: create the home/.local/bin folder
   file:
     path: $HOME/.local/bin
