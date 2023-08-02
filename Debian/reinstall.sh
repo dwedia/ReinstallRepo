@@ -22,17 +22,6 @@ then
     ansible-playbook reinstall-playbook.yml -K;
 fi
 
-# run the flatpak install playbook
-if [ -f /usr/bin/ansible ]; 
-then
-    ansible-playbook reinstall-flatpak-playbook.yml;
-fi
-
-if [ -f /usr/bin/distrobox ]; 
-then
-    ansible-playbook reinstall-distrobox-playbook.yml;
-fi
-
 # Set up git config user
 git config --global user.name "Ramiraz80"
 git config --global user.email "eric@bellaiche.net"
@@ -51,4 +40,4 @@ fi
 
 
 #### Missing:
-better lock screen and i3lock
+# better lock screen and i3lock
