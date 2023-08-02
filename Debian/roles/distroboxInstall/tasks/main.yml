@@ -9,7 +9,6 @@
   ansible.builtin.shell:
     cmd: distrobox enter fedora-apps -- "{{ item }}"
   loop:
-    - "sudo dnf install -y git"
     - "sudo dnf install -y htop"
     - "sudo dnf install -y tldr"
     - "sudo dnf install -y tmux"
@@ -17,7 +16,6 @@
     - "sudo dnf install -y bat"
     - "sudo dnf install -y exa"
     - "sudo dnf install -y dua-cli"
-    - "sudo dnf install gnome-screenshot"
     - "sudo dnf install -y which"
 
 - name: export packages in fedora-apps container
