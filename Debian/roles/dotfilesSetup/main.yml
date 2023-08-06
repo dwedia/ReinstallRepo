@@ -1,0 +1,29 @@
+---
+# inspiration: https://stegosaurusdormant.com/bare-git-repo/
+- name: make temp dotfiles folder
+  file:
+    path: $HOME/dotfiles-tmp
+    state: directory
+    mode: '0755'
+
+- name: Sync dotfiles
+  git:
+    repo: https://github.com/Ramiraz80/dotfiles-thor.git
+    dest: $HOME/dotfiles-tmp
+    separate_git_dir: $HOME/.dotfilesGIT
+
+- name: rsync files to correct location
+  ansible.posix.synchronize:
+    src: $HOME/dotfiles-tmp/
+    dest: $HOME/
+    rsync_opts:
+      - "--recursive"
+      - "--exclude '.git'"
+  notify:
+    - Delete temp folder
+
+handlers:
+  - name: Delete temp folder
+    file:
+      path: $HOME/dotfiles-tmp
+      state: absent
