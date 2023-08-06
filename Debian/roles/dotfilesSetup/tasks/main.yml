@@ -14,7 +14,7 @@
 
 - name: move dotfiles with rsync
   ansible.builtin.shell:
-    cmd: rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
+    cmd: rsync --recursive --verbose --exclude '.git' $HOME/dotfiles-tmp/ $HOME/
 
 - name: deleting temp dir.
   file:
