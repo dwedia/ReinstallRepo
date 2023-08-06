@@ -12,18 +12,15 @@
     dest: $HOME/dotfiles-tmp
     separate_git_dir: $HOME/.dotfilesGIT
 
-- name: rsync files to correct location
-  ansible.posix.synchronize:
-    src: $HOME/dotfiles-tmp/
-    dest: $HOME/
-    rsync_opts:
-      - "--recursive"
-      - "--exclude '.git'"
-  notify:
-    - Delete temp folder
+- name: move dotfiles with rsync
+  ansible.builtin.shell:
+    cmd: rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
+  notify: "files moved"
 
-  handlers:
-    - name: Delete temp folder
-      file:
-        path: $HOME/dotfiles-tmp
-        state: absent
+handlers:
+  - name: delete dotfiles temp folder.
+    file:
+      path: $HOME/dotfiles-tmp
+      state: absent
+    listen: "files moved"
+
