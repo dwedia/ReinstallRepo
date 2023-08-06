@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# enable contrib and nonfree repositories
-sudo apt-add-repository contrib -y
-sudo apt-add-repository non-free -y
-
 # install ansible-core if not already installed
 if [ ! -f /usr/bin/ansible ]; 
 then
@@ -27,7 +23,7 @@ git config --global user.name "Ramiraz80"
 git config --global user.email "eric@bellaiche.net"
 
 # Check for distribution
-DISTRO=$(lsb_release -i | grep Distributor | cut -f 2-)
+DISTRO=$(cat /etc/os-release | grep PRETTY | awk -F '"' '{print $2}' | awk '{print $1}')
 
 # setup firewall with ufw, if Distribution is Debian
 if [ "Debian" = $DISTRO ];
