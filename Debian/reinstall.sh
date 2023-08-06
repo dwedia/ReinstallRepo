@@ -15,6 +15,7 @@ fi
 
 # install the community general flatpak module
 ansible-galaxy collection install community.general
+ansible-galaxy collection install ansible.posix
 
 # run the apt install playbook
 if [ -f /usr/bin/ansible ]; 
