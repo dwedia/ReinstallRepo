@@ -21,3 +21,8 @@
   become: false
   roles:
   - distroboxInstall
+
+- hosts: localhost
+  become: false
+  roles:
+  - dotfilesSetup

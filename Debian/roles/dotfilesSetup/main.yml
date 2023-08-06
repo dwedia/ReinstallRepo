@@ -22,8 +22,8 @@
   notify:
     - Delete temp folder
 
-handlers:
-  - name: Delete temp folder
-    file:
-      path: $HOME/dotfiles-tmp
-      state: absent
+  handlers:
+    - name: Delete temp folder
+      file:
+        path: $HOME/dotfiles-tmp
+        state: absent
