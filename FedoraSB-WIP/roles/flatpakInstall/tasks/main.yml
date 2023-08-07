@@ -1,0 +1,21 @@
+---
+- name: Add the flathub flatpak repository remote to the user installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: install flatpaks
+  community.general.flatpak:
+    name:
+      - com.github.tchx84.Flatseal
+      - com.mattjakeman.ExtensionManager
+      - com.spotify.Client
+      - com.vscodium.codium
+      - md.obsidian.Obsidian
+      - org.signal.Signal
+      - org.videolan.VLC
+      - org.mozilla.firefox
+      - org.libreoffice.LibreOffice
+    method: user
