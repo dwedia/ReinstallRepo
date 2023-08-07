@@ -7,9 +7,10 @@
     state: directory
     mode: '0755'
 
+# REMEMBER TO CHANGE THE REPO URL
 - name: Sync dotfiles
   git:
-    repo: https://github.com/Ramiraz80/dotfiles-thor.git
+    repo: https://github.com/Ramiraz80/dotfiles-thor
     dest: $HOME/dotfiles-tmp
     separate_git_dir: $HOME/.dotfilesGIT
 

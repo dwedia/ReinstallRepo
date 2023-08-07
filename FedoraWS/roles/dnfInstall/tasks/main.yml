@@ -32,11 +32,7 @@
       - flatpak
       - xclip
       - lxpolkit
-      - ufw
-      - gufw
       - timeshift
-      - git
-      - gnome-screenshot
 
 - name: remove preinstalled apps
   become: yes
