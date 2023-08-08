@@ -8,11 +8,6 @@
   - systemSetup
 
 - hosts: localhost
-  become: true
-  roles:
-  - dnfInstall
-
-- hosts: localhost
   become: false
   roles:
   - flatpakInstall

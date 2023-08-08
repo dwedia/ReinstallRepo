@@ -19,6 +19,7 @@
     - "sudo dnf install -y which"
     - "sudo dnf install -y git"
     - "sudo dnf install -y gnome-screenshot"
+    - "sudo dnf install -y rofi"
 
 - name: export packages in fws38 container
   ansible.builtin.shell:
@@ -33,3 +34,4 @@
     - "distrobox-export -b /usr/bin/dua -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/git -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/gnome-screenshot -ef '-i -c' -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/rofi -ep $HOME/.local/bin"
