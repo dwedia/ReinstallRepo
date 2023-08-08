@@ -7,7 +7,7 @@
 
 - name: add home/.local/bin to path
   lineinfile:
-    path: $HOME/.profile
+    path: $HOME/.bashrc
     line: |
       if [ -d "$HOME/.local/bin" ] ; then
         PATH="$HOME/.local/bin:$PATH"
@@ -22,7 +22,7 @@
 
 - name: add home/.local/scripts to path
   lineinfile:
-    path: $HOME/.profile
+    path: $HOME/.bashrc
     line: |
       if [ -d "$HOME/.local/scripts" ] ; then
         PATH="$HOME/.local/bin:$PATH"
@@ -31,7 +31,7 @@
 
 - name: include .bash_aliases in .bashrc
   lineinfile:
-    path: $HOME/.profile
+    path: $HOME/.bashrc
     line: |
       if [ -f $HOME/.bash_aliases ] ; then
         . ~/.bash_aliases
