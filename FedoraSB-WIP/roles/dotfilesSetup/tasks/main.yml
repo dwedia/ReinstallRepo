@@ -8,8 +8,7 @@
     mode: '0755'
 
 - name: Get the repository URL
-  command: echo "Please enter the repository URL:"
-  register: repository_url
+  raw: read -p "Please enter the repository URL:" repository_url
 
 - name: Sync dotfiles
   git:
