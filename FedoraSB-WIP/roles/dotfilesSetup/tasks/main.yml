@@ -9,6 +9,7 @@
 
 - name: Get the repository URL
   raw: read -p "Please enter the repository URL:" repository_url
+  register: repository_url
 
 - name: Sync dotfiles
   git:
