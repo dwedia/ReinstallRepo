@@ -7,13 +7,9 @@
     state: directory
     mode: '0755'
 
-- name: Get the repository URL
-  command: echo "Please enter the repository URL:"
-  register: repository_url
-
 - name: Sync dotfiles
   git:
-    repo: "{{ repository_url.stdout }}"
+    repo: https://github.com/Ramiraz80/dotfiles-thor.git
     dest: $HOME/dotfiles-tmp
     separate_git_dir: $HOME/.dotfilesGIT
 
