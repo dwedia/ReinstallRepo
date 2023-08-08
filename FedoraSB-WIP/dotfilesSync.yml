@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+    - name: Get the repository URL
+      pause:
+        prompt: "Please enter the repository URL:"
+        message: "Press enter to continue."
+      register: repository_url
+
+    - name: Clone the repository
+      git:
+        repo: "{{ repository_url.stdout }}"
+        dest: /opt/my_project
+
+    - name: Check for errors
+      fail: msg="The repository URL was not entered"
+      when: repository_url is not defined
