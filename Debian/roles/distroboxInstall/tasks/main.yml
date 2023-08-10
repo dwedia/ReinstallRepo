@@ -18,6 +18,7 @@
     - "sudo dnf install -y dua-cli"
     - "sudo dnf install -y which"
     - "sudo dnf install -y git"
+    - "sudo dnf install -y rofi"
 
 - name: export packages in fws38 container
   ansible.builtin.shell:
@@ -31,3 +32,4 @@
     - "distrobox-export -b /usr/bin/exa -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/dua -ep ~/.local/bin"
     - "distrobox-export -b /usr/bin/git -ep ~/.local/bin"
+    - "distrobox-export -b /usr/bin/rofi -ep ~/.local/bin"
