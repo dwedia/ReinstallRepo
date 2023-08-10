@@ -14,7 +14,7 @@
     state: present
 
 - name: Upgrade all packages
-  dnf: 
+  dnf:
     name: "*"
     state: latest
 
@@ -25,7 +25,6 @@
       - distrobox
       - syncthing
       - i3
-      - rofi
       - vim
       - terminator
       - clamav
