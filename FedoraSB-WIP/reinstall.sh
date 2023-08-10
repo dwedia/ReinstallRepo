@@ -16,5 +16,3 @@ fi
 # Check for distribution
 DISTRO=$(cat /etc/os-release | grep PRETTY | awk -F '"' '{print $2}' | awk '{print $1}')
 
-#### Missing:
-# better lock screen and i3lock
