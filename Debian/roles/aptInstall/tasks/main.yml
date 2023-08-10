@@ -6,7 +6,6 @@
       - distrobox
       - syncthing
       - i3
-      - rofi
       - vim
       - terminator
       - clamav
@@ -16,8 +15,7 @@
       - ufw
       - gufw
       - timeshift
-      - git
-      - gnome-screenshot
+
 
 - name: remove preinstalled apps
   become: yes

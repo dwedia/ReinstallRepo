@@ -17,4 +17,5 @@
       - org.signal.Signal
       - org.videolan.VLC
       - org.mozilla.firefox
+      - org.flameshot.Flameshot
     method: user
