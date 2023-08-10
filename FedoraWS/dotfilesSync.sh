@@ -21,4 +21,8 @@ git clone --separate-git-dir=$HOME/dotfilesGIT "$repository" $HOME/dotfiles-tmp
 # copy the files to the correct locations.
 rsync --recursive --verbose --exclude '.git' $HOME/dotfiles-tmp $HOME/
 
+if [ -d "$HOME/dotfiles-tmp" ]; then
+    rm -rf $HOME/dotfiles-tmp
+fi
+
 # rm -rf $HOME/dotfiles-tmp
