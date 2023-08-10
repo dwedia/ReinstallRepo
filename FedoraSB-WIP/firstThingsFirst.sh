@@ -4,3 +4,8 @@
 
 # Install packages
 rpm-ostree install i3 ansible-core distrobox terminator gnome-shell-extension-pop-shell vim lxpolkit https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+echo "Rebooting, to ensure that the new packages are installed"
+sleep 5
+
+systemctl reboot
