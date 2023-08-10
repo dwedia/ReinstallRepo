@@ -18,4 +18,5 @@
       - org.videolan.VLC
       - org.mozilla.firefox
       - org.flameshot.Flameshot
+      - org.libreoffice.LibreOffice
     method: user
