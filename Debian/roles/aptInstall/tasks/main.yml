@@ -4,7 +4,6 @@
   apt:
     pkg:
       - distrobox
-      - syncthing
       - i3
       - vim
       - terminator
@@ -15,6 +14,7 @@
       - ufw
       - gufw
       - timeshift
+      - rofi
 
 
 - name: remove preinstalled apps

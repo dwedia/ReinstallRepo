@@ -19,4 +19,5 @@
       - org.mozilla.firefox
       - org.flameshot.Flameshot
       - org.libreoffice.LibreOffice
+      - me.kozec.syncthingtk
     method: user
