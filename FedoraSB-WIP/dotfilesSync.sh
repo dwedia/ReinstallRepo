@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Prompt the user for a Git repository URL
 read -p "Enter the Git repository URL: " repo_url
@@ -15,6 +15,11 @@ repository=$repo_url
 # check if our temporary dotfiles folder exists, if it does, delete it.
 if [ -d "$HOME/dotfiles-tmp" ]; then
     rm -rf $HOME/dotfiles-tmp
+fi
+
+# check if our dotfilesGIT folder exists, if it does, delete it.
+if [ -d "$HOME/dotfilesGIT" ]; then
+    rm -rf $HOME/dotfilesGIT
 fi
 
 # make the dotfiles-tmp folder
