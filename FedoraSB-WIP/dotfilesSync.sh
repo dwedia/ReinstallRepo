@@ -29,7 +29,7 @@ mkdir -p $HOME/dotfiles-tmp
 git clone --separate-git-dir=$HOME/dotfilesGIT "$repository" $HOME/dotfiles-tmp
 
 # copy the files to the correct locations.
-rsync --recursive --verbose --exclude '.git' $HOME/dotfiles-tmp $HOME/
+rsync --recursive --verbose --exclude '.git' $HOME/dotfiles-tmp/ $HOME/
 
 # check if our temporary dotfiles folder exists, if it does, delete it.
 if [ -d "$HOME/dotfiles-tmp" ]; then
