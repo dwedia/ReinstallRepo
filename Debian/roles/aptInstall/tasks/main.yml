@@ -1,7 +1,7 @@
 ---
-- name: install needed software, that can't run in distrobox
-  become: yes
-  apt:
+- name: Install needed software, that can't run in distrobox
+  become: true
+  ansible.builtin.apt:
     pkg:
       - distrobox
       - i3
@@ -17,9 +17,9 @@
       - rofi
 
 
-- name: remove preinstalled apps
-  become: yes
-  apt:
+- name: Remove preinstalled apps
+  become: true
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: absent
   with_items:
@@ -40,9 +40,9 @@
     - firefox-esr
     - firefox
 
-- name: upgrade all installed packages to latest version
-  become: yes
+- name: Upgrade all installed packages to latest version
+  become: true
   apt:
     upgrade: dist
-    update_cache: yes
-    autoremove: yes
+    update_cache: true
+    autoremove: true
