@@ -5,7 +5,7 @@
 
 - name: Download RPM Fusion Free GPG key RPM file
   get_url:
-    url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
+    url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
     dest: /tmp/rpmfusion-free-release.rpm
 
 - name: import RPM Fusion Free GPG key from local file
@@ -21,7 +21,7 @@
 
 - name: Download RPM Fusion Non Free GPG key RPM file
   get_url:
-    url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+    url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
     dest: /tmp/rpmfusion-nonfree-release.rpm
 
 - name: import RPM Fusion Non Free GPG key from local file
