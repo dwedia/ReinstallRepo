@@ -3,14 +3,9 @@
   command: "rpm -E %fedora"
   register: fedora_version
 
-- name: Download RPM Fusion Free GPG key RPM file
-  get_url:
-    url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
-    dest: /tmp/rpmfusion-free-release.rpm
-
-- name: import RPM Fusion Free GPG key from local file
+- name: import RPM Fusion Free GPG key
   ansible.builtin.rpm_key:
-    key: /tmp/rpmfusion-free-release.rpm
+    key: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
     state: present
 
 - name: Install RPM Fusion Free
@@ -19,14 +14,9 @@
     description: RPM Fusion Free Repo
     baseurl: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm
 
-- name: Download RPM Fusion Non Free GPG key RPM file
-  get_url:
-    url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
-    dest: /tmp/rpmfusion-nonfree-release.rpm
-
-- name: import RPM Fusion Non Free GPG key from local file
+- name: import RPM Fusion Non Free GPG key
   ansible.builtin.rpm_key:
-    key: /tmp/rpmfusion-nonfree-release.rpm
+    key: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
     state: present
 
 - name: Install RPM Fusion Non Free
