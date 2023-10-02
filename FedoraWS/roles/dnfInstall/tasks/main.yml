@@ -5,7 +5,7 @@
 
 - name: import RPM Fusion Free GPG key
   ansible.builtin.rpm_key:
-    key: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
+    key: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
     state: present
 
 - name: Install RPM Fusion Free
@@ -16,7 +16,7 @@
 
 - name: import RPM Fusion Non Free GPG key
   ansible.builtin.rpm_key:
-    key: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
+    key: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
     state: present
 
 - name: Install RPM Fusion Non Free
