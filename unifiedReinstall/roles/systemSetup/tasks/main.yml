@@ -1,0 +1,51 @@
+---
+- name: create the home/.local/bin folder
+  file:
+    path: $HOME/.local/bin
+    state: directory
+    mode: '0755'
+
+- name: add home/.local/bin to path
+  lineinfile:
+    path: $HOME/.bashrc
+    line: |
+      if [ -d "$HOME/.local/bin" ] ; then
+        PATH="$HOME/.local/bin:$PATH"
+      fi
+    state: present
+
+- name: create the home/.local/bin folder
+  file:
+    path: $HOME/.local/scripts
+    state: directory
+    mode: '0755'
+
+- name: add home/.local/scripts to path
+  lineinfile:
+    path: $HOME/.bashrc
+    line: |
+      if [ -d "$HOME/.local/scripts" ] ; then
+        PATH="$HOME/.local/bin:$PATH"
+      fi
+    state: present
+
+- name: include .bash_aliases in .bashrc
+  lineinfile:
+    path: $HOME/.bashrc
+    line: |
+      if [ -f $HOME/.bash_aliases ] ; then
+        . ~/.bash_aliases
+      fi
+    state: present
+
+- name: create the home/Documents/gitRepos/myOwnRepos folder
+  file:
+    path: $HOME/Documents/gitRepos/myOwnRepos
+    state: directory
+    mode: '0755'
+
+- name: create the home/Documents/gitRepos/otherPeoplesRepos folder
+  file:
+    path: $HOME/Documents/gitRepos/otherPeoplesRepos
+    state: directory
+    mode: '0755'

@@ -1,0 +1,48 @@
+---
+- name: Install needed software, that can't run in distrobox
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - distrobox
+      - i3
+      - vim
+      - terminator
+      - clamav
+      - flatpak
+      - xclip
+      - lxpolkit
+      - ufw
+      - gufw
+      - timeshift
+      - rofi
+
+
+- name: Remove preinstalled apps
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - libreoffice
+    - libreoffice-common
+    - thunderbird
+    - vlc
+    - gnome-2048
+    - gnome-sudoku
+    - gnome-robots
+    - gnome-nibbles
+    - gnome-chess
+    - gnome-klotski
+    - gnome-mahjongg
+    - gnome-mines
+    - gnome-taquin
+    - gnome-tetravex
+    - firefox-esr
+    - firefox
+
+- name: Upgrade all installed packages to latest version
+  become: true
+  apt:
+    upgrade: dist
+    update_cache: true
+    autoremove: true

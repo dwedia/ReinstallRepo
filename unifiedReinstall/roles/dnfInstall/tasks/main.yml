@@ -1,0 +1,79 @@
+---
+- name: Get Fedora Version
+  command: "rpm -E %fedora"
+  register: fedora_version
+
+- name: import RPM Fusion Free GPG key
+  ansible.builtin.rpm_key:
+    key: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
+    state: present
+
+- name: Install RPM Fusion Free
+  ansible.builtin.yum_repository:
+    name: rpmfusion-free
+    description: RPM Fusion Free Repo
+    baseurl: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm
+
+- name: import RPM Fusion Non Free GPG key
+  ansible.builtin.rpm_key:
+    key: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
+    state: present
+
+- name: Install RPM Fusion Non Free
+  ansible.builtin.yum_repository:
+    name: rpmfusion-nonfree
+    description: RPM Fusion Non Free Repo
+    baseurl: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm
+
+#- name: Install RPM Fusion Free
+#  dnf:
+#    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
+#    state: present
+
+#- name: Install RPM Fusion NonFree
+#  dnf:
+#    name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
+#    state: present
+
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: install needed software, that can't run in distrobox
+  become: true
+  dnf:
+    pkg:
+      - distrobox
+      - syncthing
+      - i3
+      - vim
+      - terminator
+      - clamav
+      - flatpak
+      - xclip
+      - lxpolkit
+      - timeshift
+
+- name: remove preinstalled apps
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - libreoffice
+    - libreoffice-common
+    - thunderbird
+    - vlc
+    - gnome-2048
+    - gnome-sudoku
+    - gnome-robots
+    - gnome-nibbles
+    - gnome-chess
+    - gnome-klotski
+    - gnome-mahjongg
+    - gnome-mines
+    - gnome-taquin
+    - gnome-tetravex
+    - firefox-esr
+    - firefox
