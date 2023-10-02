@@ -3,15 +3,37 @@
   command: "rpm -E %fedora"
   register: fedora_version
 
-- name: Install RPM Fusion Free
-  dnf:
-    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
+- name: import RPM Fusion Free GPG key
+  ansible.builtin.rpm_key:
+    key: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
     state: present
 
-- name: Install RPM Fusion NonFree
-  dnf:
-    name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
+- name: Install RPM Fusion Free
+  ansible.builtin.yum_repository:
+    name: rpmfusion-free
+    description: RPM Fusion Free Repo
+    baseurl: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm
+
+- name: import RPM Fusion Non-Free GPG key
+  ansible.builtin.rpm_key:
+    key: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     state: present
+
+- name: Install RPM Fusion Non Free
+  ansible.builtin.yum_repository:
+    name: rpmfusion-nonfree
+    description: RPM Fusion Non Free Repo
+    baseurl: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm
+
+#- name: Install RPM Fusion Free
+#  dnf:
+#    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
+#    state: present
+
+#- name: Install RPM Fusion NonFree
+#  dnf:
+#    name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
+#    state: present
 
 - name: Upgrade all packages
   dnf:
