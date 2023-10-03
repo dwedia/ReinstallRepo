@@ -1,20 +1,11 @@
 ---
 - name: Reinstall playbook
   hosts: localhost
-  tasks:
-
-
-  - name: Run role dnf dnfInstall
-    become: true
-    roles:
-      - role: dnfInstall
-        when: ansible_facts['os_family'] == "RedHat"
-      - role: aptInstall
-        when: ansible_facts['os_family'] == "Debian"
-
-  - name: Run roles Systemsetup, FlatpakInstall, and DistroboxInstall
-    become: false
-    roles:
-      - systemSetup
-      - flatpakInstall
-      - distroboxInstall
+  roles:
+    - role: systemSetup
+    - role: dnfInstall
+      when: ansible_facts['os_family'] == "RedHat"
+    - role: aptInstall
+      when: ansible_facts['os_family'] == "Debian"
+    - role: flatpakInstall
+    - role: distroboxInstall

@@ -42,7 +42,7 @@
 
 - name: Upgrade all installed packages to latest version
   become: true
-  apt:
+  ansible.builtin.apt:
     upgrade: dist
     update_cache: true
     autoremove: true
