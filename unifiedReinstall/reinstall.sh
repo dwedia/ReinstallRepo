@@ -18,7 +18,7 @@ then
 fi
 
 # Install ansible-core on Debian
-if [ "Debian" = $DISTRO ];
+if [ "Debian" = $DISTRO ] || [ "Ubuntu" = $DISTRO ];
 then
   if [ ! -f /usr/bin/ansible ]; 
   then
