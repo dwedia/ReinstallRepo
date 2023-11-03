@@ -55,6 +55,8 @@
       - xclip
       - lxpolkit
       - timeshift
+      - libreoffice-langpack-da
+      - stow
 
 - name: remove preinstalled apps
   become: true
