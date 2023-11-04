@@ -14,6 +14,6 @@
         clone: true
 
     - name: use stow to put the dotfiles in place
-      ansible.builtin.command:
+      ansible.builtin.shell:
         cmd: cd $HOME/.dotfiles && stow . --adopt && git reset --hard && stow -R .
       changed_when: false
