@@ -6,7 +6,7 @@
 
 - name: Clone dotfiles repository
   ansible.builtin.git:
-    repo: {{ dotfilesRepo }}
+    repo: "{{ dotfilesRepo }}"
     dest: $HOME/.dotfiles
     clone: true
 
