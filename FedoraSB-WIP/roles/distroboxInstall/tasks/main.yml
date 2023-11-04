@@ -1,11 +1,12 @@
 ---
-- name: create distrobox containers
+- name: Create distrobox containers
   ansible.builtin.shell:
     cmd: yes | distrobox create -n "{{ item }}" -i fedora:38
   loop:
     - fws38
+  changed_when: false
 
-- name: install packages in fws38 container
+- name: Install packages in fws38 container
   ansible.builtin.shell:
     cmd: distrobox enter fws38 -- "{{ item }}"
   loop:
@@ -19,8 +20,9 @@
     - "sudo dnf install -y which"
     - "sudo dnf install -y rofi"
     - "sudo dnf install -y feh"
+  changed_when: false
 
-- name: export packages in fws38 container
+- name: Export packages in fws38 container
   ansible.builtin.shell:
     cmd: distrobox enter fws38 -- "{{ item }}"
   loop:
@@ -33,3 +35,4 @@
     - "distrobox-export -b /usr/bin/dua -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/rofi -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/feh -ep $HOME/.local/bin"
+  changed_when: false
