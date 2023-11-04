@@ -1,0 +1,19 @@
+---
+- name: Reinstall dotfiles
+  hosts: localhost
+  become: false
+  vars_prompt:
+    - name: dotfilesRepo
+      prompt: "Url of Dotfiles repo: "
+      private: false
+
+- name: Clone dotfiles repository
+  ansible.builtin.git:
+    repo: "{{ dotfilesRepo }}"
+    dest: $HOME/.dotfiles
+    clone: true
+
+- name: use stow to put the dotfiles in place
+  ansible.builtin.command:
+    cmd: cd $HOME/.dotfiles && stow . --adopt && git reset --hard && stow -R .
+  changed_when: false
