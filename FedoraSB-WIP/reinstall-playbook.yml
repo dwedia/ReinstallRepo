@@ -7,4 +7,3 @@
     - systemSetup
     - flatpakInstall
     - distroboxInstall
-    - dotfilesSetup
