@@ -16,7 +16,7 @@
       - md.obsidian.Obsidian
       - org.signal.Signal
       - org.videolan.VLC
-      - org.mozilla.firefox
       - org.libreoffice.LibreOffice
       - org.flameshot.Flameshot
+      - com.brave.Browser
     method: user
