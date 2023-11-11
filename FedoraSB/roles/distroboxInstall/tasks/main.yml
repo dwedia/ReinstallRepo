@@ -19,6 +19,7 @@
     - "sudo dnf install -y dua-cli"
     - "sudo dnf install -y which"
     - "sudo dnf install -y feh"
+    - "sudo dnf install -y stow"
   changed_when: false
 
 - name: Export packages in fws38 container
@@ -33,4 +34,5 @@
     - "distrobox-export -b /usr/bin/exa -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/dua -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/feh -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/stow -ep $HOME/.local/bin"
   changed_when: false
