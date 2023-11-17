@@ -1,0 +1,44 @@
+---
+- name: Create distrobox container
+  ansible.builtin.shell:
+    cmd: yes | distrobox create -n "{{ item }}" -i fedora:39
+  loop:
+    - fWS
+  changed_when: false
+
+- name: Create Distrobox systemD container
+  ansible.builtin.shell:
+    cmd: yes | distrobox create -i fedora:39 -n "{{ item }}" --init --additional-packages "systemd"
+  loop:
+    -fSBsystemd
+
+- name: Install packages in fWS container
+  ansible.builtin.shell:
+    cmd: distrobox enter fWS -- "{{ item }}"
+  loop:
+    - "sudo dnf install -y htop"
+    - "sudo dnf install -y tldr"
+    - "sudo dnf install -y tmux"
+    - "sudo dnf install -y tree"
+    - "sudo dnf install -y bat"
+    - "sudo dnf install -y exa"
+    - "sudo dnf install -y dua-cli"
+    - "sudo dnf install -y which"
+    - "sudo dnf install -y feh"
+    - "sudo dnf install -y stow"
+  changed_when: false
+
+- name: Export packages in fWS container
+  ansible.builtin.shell:
+    cmd: distrobox enter fWS -- "{{ item }}"
+  loop:
+    - "distrobox-export -b /usr/bin/htop -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/tldr -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/tmux -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/tree -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/bat -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/exa -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/dua -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/feh -ep $HOME/.local/bin"
+    - "distrobox-export -b /usr/bin/stow -ep $HOME/.local/bin"
+  changed_when: false
