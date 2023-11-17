@@ -10,7 +10,7 @@
   ansible.builtin.shell:
     cmd: yes | distrobox create -i fedora:39 -n "{{ item }}" --init --additional-packages "systemd"
   loop:
-    -fSBsystemd
+    - fSBsystemd
 
 - name: Install packages in fWS container
   ansible.builtin.shell:
