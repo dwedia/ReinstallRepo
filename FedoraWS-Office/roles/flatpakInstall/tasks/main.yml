@@ -13,10 +13,12 @@
       - com.mattjakeman.ExtensionManager
       - com.spotify.Client
       - com.vscodium.codium
-      - md.obsidian.Obsidian
+      - com.brave.Browser
+      - com.github.marktext.marktext
       - org.signal.Signal
       - org.videolan.VLC
-      - org.mozilla.firefox
       - org.libreoffice.LibreOffice
       - org.flameshot.Flameshot
+      - org.ferdium.Ferdium
+      - md.obsidian.Obsidian
     method: user

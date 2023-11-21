@@ -25,16 +25,6 @@
     description: RPM Fusion Non Free Repo
     baseurl: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm
 
-#- name: Install RPM Fusion Free
-#  dnf:
-#    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
-#    state: present
-
-#- name: Install RPM Fusion NonFree
-#  dnf:
-#    name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
-#    state: present
-
 - name: Upgrade all packages
   dnf:
     name: "*"
@@ -57,6 +47,9 @@
       - timeshift
       - libreoffice-langpack-da
       - stow
+      - pavucontrol
+      - pasystray
+      - blueman
 
 - name: remove preinstalled apps
   become: true
