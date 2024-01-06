@@ -17,6 +17,7 @@
       - org.signal.Signal
       - org.videolan.VLC
       - org.mozilla.firefox
+      - org.freedesktop.Platform.ffmpeg-full/x86_64/22.08
       - org.flameshot.Flameshot
       - org.libreoffice.LibreOffice
       - me.kozec.syncthingtk

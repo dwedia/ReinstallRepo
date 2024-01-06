@@ -19,4 +19,6 @@
       - org.libreoffice.LibreOffice
       - org.flameshot.Flameshot
       - com.brave.Browser
+      - org.freedesktop.Platform.ffmpeg-full/x86_64/22.08
+      - org.mozilla.firefox
     method: user
