@@ -1,20 +1,20 @@
 ---
 - name: create distrobox containers
   ansible.builtin.shell:
-    cmd: yes | distrobox create -n "{{ item }}" -i fedora:38
+    cmd: yes | distrobox create -n "{{ item }}" -i fedora:39
   loop:
-    - fws38
+    - fws39
 
-- name: install packages in fws38 container
+- name: install packages in fws39 container
   ansible.builtin.shell:
-    cmd: distrobox enter fws38 -- "{{ item }}"
+    cmd: distrobox enter fws39 -- "{{ item }}"
   loop:
     - "sudo dnf install -y htop"
     - "sudo dnf install -y tldr"
     - "sudo dnf install -y tmux"
     - "sudo dnf install -y tree"
     - "sudo dnf install -y bat"
-    - "sudo dnf install -y exa"
+    - "sudo dnf install -y eza"
     - "sudo dnf install -y dua-cli"
     - "sudo dnf install -y which"
     - "sudo dnf install -y git"
@@ -22,7 +22,7 @@
 
 - name: export packages in fws38 container
   ansible.builtin.shell:
-    cmd: distrobox enter fws38 -- "{{ item }}"
+    cmd: distrobox enter fws39 -- "{{ item }}"
   loop:
     - "distrobox-export -b /usr/bin/htop -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/tldr -ep $HOME/.local/bin"

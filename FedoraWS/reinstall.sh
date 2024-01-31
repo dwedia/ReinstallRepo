@@ -33,6 +33,15 @@ then
     sudo ufw enable
 fi
 
+# setup firewall with firewalld, if Distribution is Fedora
+if [ "Fedora" = $DISTRO ];
+then
+    sudo firewall-cmd --set-default-zone=drop
+    sudo firewall-cmd --runtime-to-permanent
+    sudo firewall-cmd --reload
+    sudo firewall-cmd --list-all
+fi
+
 
 
 #### Missing:

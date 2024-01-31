@@ -9,8 +9,9 @@
   lineinfile:
     path: $HOME/.bashrc
     line: |
-      if [ -d "$HOME/.local/bin" ] ; then
-        PATH="$HOME/.local/bin:$PATH"
+      if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+      then
+        PATH="$HOME/.local/bin:$HOME/bin:$PATH"
       fi
     state: present
 
@@ -24,9 +25,11 @@
   lineinfile:
     path: $HOME/.bashrc
     line: |
-      if [ -d "$HOME/.local/scripts" ] ; then
-        PATH="$HOME/.local/bin:$PATH"
+      if ! [[ "$PATH" =~ "$HOME/.local/scripts:" ]]
+      then
+        PATH="$HOME/.local/scripts:$PATH"
       fi
+
     state: present
 
 - name: include .bash_aliases in .bashrc
