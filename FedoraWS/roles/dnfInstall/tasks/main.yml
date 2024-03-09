@@ -62,6 +62,8 @@
       - timeshift
       - libreoffice-langpack-da
       - stow
+      - pavucontrol
+      - volumeicon
 
 - name: remove preinstalled apps
   become: true

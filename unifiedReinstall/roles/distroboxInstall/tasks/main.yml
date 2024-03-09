@@ -18,7 +18,6 @@
     - "sudo dnf install -y exa"
     - "sudo dnf install -y dua-cli"
     - "sudo dnf install -y which"
-    - "sudo dnf install -y git"
     - "sudo dnf install -y feh"
     - "sudo dnf install -y rofi"
   changed_when: false
@@ -34,7 +33,6 @@
     - "distrobox-export -b /usr/bin/bat -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/exa -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/dua -ep $HOME/.local/bin"
-    - "distrobox-export -b /usr/bin/git -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/feh -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/rofi -ep $HOME/.local/bin"
   changed_when: false
