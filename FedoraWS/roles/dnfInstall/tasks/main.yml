@@ -64,6 +64,7 @@
       - stow
       - pavucontrol
       - volumeicon
+      - blueman
 
 - name: remove preinstalled apps
   become: true
