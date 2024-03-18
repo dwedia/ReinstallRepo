@@ -50,6 +50,12 @@
       - pavucontrol
       - pasystray
       - blueman
+      - htop
+      - tldr
+      - tmux
+      - tree
+      - dua-cli
+      - feh
 
 - name: remove preinstalled apps
   become: true

@@ -1,13 +1,13 @@
 ---
 - name: create distrobox containers
   ansible.builtin.shell:
-    cmd: yes | distrobox create -n "{{ item }}" -i fedora:38
+    cmd: yes | distrobox create -n "{{ item }}" -i fedora:39
   loop:
-    - fws38
+    - fws39
 
 - name: install packages in fws38 container
   ansible.builtin.shell:
-    cmd: distrobox enter fws38 -- "{{ item }}"
+    cmd: distrobox enter fws39 -- "{{ item }}"
   loop:
     - "sudo dnf install -y htop"
     - "sudo dnf install -y tldr"

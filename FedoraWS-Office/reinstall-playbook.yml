@@ -17,7 +17,7 @@
   roles:
   - flatpakInstall
 
-- hosts: localhost
-  become: false
-  roles:
-  - distroboxInstall
+#- hosts: localhost
+#  become: false
+#  roles:
+#  - distroboxInstall
